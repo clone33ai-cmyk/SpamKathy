@@ -181,8 +181,41 @@ footer{background:var(--paper-2);border-top:1px solid var(--line);padding:40px 0
 
 .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
 .rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.live i,.never i,.brand .mark::after{animation:none}}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.live i,.never i,.brand .mark::after,.sk{animation:none}}
+
+.signup-box .embed{position:relative;min-height:520px}
+.signup-box .embed iframe{width:100%;min-height:510px;border:none;border-radius:8px;display:block;background:transparent;opacity:0;transition:opacity .35s ease}
+.signup-box .embed iframe.ready{opacity:1}
+.signup-box .skeleton{position:absolute;inset:0;pointer-events:none;transition:opacity .3s ease}
+.signup-box .skeleton.gone{opacity:0}
+.signup-box .sk{background:linear-gradient(90deg,#EEF2F0 25%,#F7FAF8 50%,#EEF2F0 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:8px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.signup-box .sk.lbl{height:11px;width:110px;margin-bottom:10px;border-radius:3px}
+.signup-box .sk.inp{height:52px;margin-bottom:22px}
+.signup-box .sk.btn{height:58px;width:100%;margin-top:8px}
+.signup-box .done{display:none;text-align:center;padding:20px 0 6px}
+.signup-box .done .big{width:48px;height:48px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:22px;font-weight:700;margin:0 auto 16px}
+.signup-box .done h3{margin-bottom:10px}
+.signup-box .done p{color:var(--ink-2);font-size:14.5px;margin-bottom:6px}
 </style>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1377211984291344');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -233,16 +266,38 @@ footer{background:var(--paper-2);border-top:1px solid var(--line);padding:40px 0
     <div class="signup-box" id="signupBox">
       <h3>Try Kathy free for 7 days</h3>
       <p class="sub">Tell us your phone system and see if you qualify for 24-hour setup.</p>
-      <div class="sfield">
-        <label for="h-email">Work email</label>
-        <input id="h-email" type="email" placeholder="you@yourbusiness.com" autocomplete="email">
+
+      <div class="embed" id="heroEmbed">
+        <div class="skeleton" id="heroSkeleton" aria-hidden="true">
+          <div class="sk lbl"></div><div class="sk inp"></div>
+          <div class="sk lbl"></div><div class="sk inp"></div>
+          <div class="sk btn"></div>
+        </div>
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/GGLAnOtQQQ9p2NFuiFWk"
+          id="inline-GGLAnOtQQQ9p2NFuiFWk"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Form 3"
+          data-height="510"
+          data-layout-iframe-id="inline-GGLAnOtQQQ9p2NFuiFWk"
+          data-form-id="GGLAnOtQQQ9p2NFuiFWk"
+          title="Spam Kathy signup form"
+          loading="eager">
+        </iframe>
       </div>
-      <div class="sfield">
-        <label for="h-phone">Business phone number</label>
-        <input id="h-phone" type="tel" inputmode="tel" placeholder="(214) 555-0148" autocomplete="tel">
+
+      <div class="done" id="heroDone" role="status" aria-live="polite">
+        <div class="big">✓</div>
+        <h3>You're in.</h3>
+        <p>Check your email in the next few minutes for setup steps.</p>
       </div>
-      <p class="err" id="h-err" role="alert">Please add a valid email and a 10-digit phone number.</p>
-      <button class="btn lg" id="h-go" type="button" data-cta="hero_signup">Check my phone system</button>
+
       <p class="fine">No spam from us either. Cancel any time.</p>
     </div>
   </div>
@@ -376,6 +431,7 @@ footer{background:var(--paper-2);border-top:1px solid var(--line);padding:40px 0
   <a href="signup.html" class="btn lg" data-cta="sticky">Try free for 7 days</a>
 </div>
 
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
 <script>
 (function(){
   var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -431,46 +487,45 @@ footer{background:var(--paper-2);border-top:1px solid var(--line);padding:40px 0
   if(reduced){ feed.slice(0,9).reverse().forEach(add); }
   else { feed.slice(0,4).reverse().forEach(add); i=4; setInterval(function(){ add(feed[i%feed.length]); i++; }, 1900); }
 
-  /* hero capture → partial lead, then handoff */
-  var box=document.getElementById('signupBox'),
-      em=document.getElementById('h-email'), ph=document.getElementById('h-phone');
-  function digits(v){ return (v||'').replace(/\D/g,''); }
-  function normalize(v){ var d=digits(v); if(d.length===11&&d[0]==='1') d=d.slice(1); return d.length===10?d:null; }
-  ph.addEventListener('input', function(){
-    box.classList.remove('bad');
-    var d=digits(ph.value).slice(0,10);
-    if(!d){ ph.value=''; return; }
-    if(d.length<4) ph.value=d;
-    else if(d.length<7) ph.value='('+d.slice(0,3)+') '+d.slice(3);
-    else ph.value='('+d.slice(0,3)+') '+d.slice(3,6)+'-'+d.slice(6);
-  });
-  em.addEventListener('input', function(){ box.classList.remove('bad'); });
-
+  /* hero GHL embed: prefill UTMs, reveal on load, listen for submit */
   var qs = new URLSearchParams(location.search);
-  function go(){
-    var okE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em.value.trim());
-    var nat = normalize(ph.value);
-    em.classList.toggle('miss', !okE);
-    ph.classList.toggle('miss', !nat);
-    if(!okE || !nat){ box.classList.add('bad'); (okE?ph:em).focus(); return; }
+  (function(){
+    var FORM_ID = 'GGLAnOtQQQ9p2NFuiFWk';
+    var heroFrame = document.getElementById('inline-' + FORM_ID);
+    var heroSkel  = document.getElementById('heroSkeleton');
+    if(!heroFrame) return;
 
-    var lead = {
-      stage:'phone_email_only', email:em.value.trim(), business_phone:'+1'+nat,
-      landing_page:location.pathname+location.search, cta_clicked:'hero_signup'
-    };
-    ['utm_source','utm_medium','utm_campaign','utm_content','fbclid'].forEach(function(k){ lead[k]=qs.get(k)||''; });
-    if(LEAD_WEBHOOK){
-      fetch(LEAD_WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(lead),keepalive:true}).catch(function(){});
+    var heroUrl = new URL(heroFrame.src);
+    ['utm_source','utm_medium','utm_campaign','utm_content','fbclid'].forEach(function(k){
+      if(qs.get(k)) heroUrl.searchParams.set(k, qs.get(k));
+    });
+    if(heroUrl.toString() !== heroFrame.src) heroFrame.src = heroUrl.toString();
+
+    function reveal(){
+      if(heroFrame.classList.contains('ready')) return;
+      heroFrame.classList.add('ready');
+      heroSkel.classList.add('gone');
+      setTimeout(function(){ heroSkel.style.display = 'none'; }, 320);
     }
-    console.log('[partial lead]', lead);
-    if(typeof fbq==='function') fbq('track','Lead',{content_name:'hero_capture'});
+    heroFrame.addEventListener('load', reveal);
+    setTimeout(reveal, 3500);
 
-    var out = new URLSearchParams({ email:em.value.trim(), phone:nat });
-    ['utm_source','utm_medium','utm_campaign','utm_content','fbclid'].forEach(function(k){ if(qs.get(k)) out.set(k,qs.get(k)); });
-    location.href = SIGNUP_URL + '?' + out.toString();
-  }
-  document.getElementById('h-go').addEventListener('click', go);
-  [em,ph].forEach(function(el){ el.addEventListener('keydown', function(e){ if(e.key==='Enter'){ e.preventDefault(); go(); } }); });
+    function isSubmit(data){
+      if(!data) return false;
+      if(typeof data === 'string') return /form.?submit/i.test(data);
+      var t = data.type || data.event || data.action || '';
+      return /form.?submit|submit.?success|onFormSubmit/i.test(String(t));
+    }
+    var fired = false;
+    window.addEventListener('message', function(e){
+      if(!/leadconnectorhq\.com|msgsndr\.com/.test(e.origin)) return;
+      if(fired || !isSubmit(e.data)) return;
+      fired = true;
+      if(typeof fbq === 'function') fbq('track', 'StartTrial', {content_name: 'spam_kathy_7day'});
+      document.getElementById('heroEmbed').style.display = 'none';
+      document.getElementById('heroDone').style.display = 'block';
+    });
+  })();
 
   /* carry tags onto plain signup links */
   var carry = new URLSearchParams();
