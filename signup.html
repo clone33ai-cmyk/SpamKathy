@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sign up — Spam Kathy</title>
-<meta name="description" content="Try Kathy free for 7 days. Set up in as little as 24 hours. Cancel any time.">
+<title>Sign up · Spam Kathy</title>
+<meta name="description" content="Tell us what phone system you use and we will confirm your setup before anything changes on your line.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +13,7 @@
 :root{
   --green-900:#0A5138; --green:#0E7C55; --green-600:#12A66F;
   --green-50:#E9F5EF; --green-25:#F3FAF6;
+  --red-900:#8C2A18; --red:#C7422B; --red-600:#E04A2F; --red-25:#FDF1EE;
   --ink:#0F1418; --ink-2:#39444A; --muted:#5C686D;
   --paper:#FFFFFF; --paper-2:#F6F9F7; --line:#E4E9E6; --line-2:#CDD6D1;
   --display:'Outfit',system-ui,sans-serif;
@@ -56,11 +57,6 @@ h3{font-size:19px;letter-spacing:-.02em}
 .head .never i{width:6px;height:6px;border-radius:50%;background:var(--green-600)}
 .head p{color:var(--ink-2);margin-top:14px;font-size:16.5px;max-width:52ch}
 
-/* ── GHL embed frame ────────────────────────────────────────
-   The form is cross-origin. Nothing in this stylesheet can reach
-   inside it. Everything below styles the *container* only.
-   Match the form itself in GHL: Form Builder > Styles.
-   ────────────────────────────────────────────────────────── */
 .embed{position:relative;border-top:1px solid var(--line);padding-top:26px;min-height:760px}
 .embed iframe{width:100%;min-height:750px;border:none;border-radius:8px;display:block;background:transparent;
   opacity:0;transition:opacity .35s ease}
@@ -80,14 +76,12 @@ h3{font-size:19px;letter-spacing:-.02em}
   font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.9;font-weight:500}
 .embed-note a{color:var(--green);text-decoration:underline;text-underline-offset:2px}
 
-/* success state */
 .done{display:none;text-align:center;padding:36px 0 20px}
 .done .big{width:56px;height:56px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:700;margin:0 auto 22px}
 .done h2{font-family:var(--display);font-size:30px;margin-bottom:14px;letter-spacing:-.03em}
 .done p{color:var(--ink-2);max-width:44ch;margin:0 auto 12px}
 .done .btn{margin-top:20px}
 
-/* rail */
 .rail{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px;position:sticky;top:24px}
 @media(max-width:900px){.rail{position:static}}
 .rail h3{margin-bottom:18px}
@@ -99,16 +93,12 @@ h3{font-size:19px;letter-spacing:-.02em}
 .rail .timeline{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;
   letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:2;font-weight:600}
 .rail .timeline b{color:var(--green);font-weight:600}
-.rail .call{margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
-.rail .call p{font-size:14.5px;color:var(--muted);margin-bottom:12px}
-.rail .call .btn{width:100%;font-size:15px;padding:15px 20px}
 
 footer{border-top:1px solid var(--line);background:#fff;padding:26px var(--pad)}
 .foot-in{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;color:var(--muted);font-weight:500}
 .foot-in a{color:var(--ink-2);text-decoration:underline;text-underline-offset:2px;margin-right:14px}
 </style>
 
-<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -122,9 +112,7 @@ fbq('init', '1377211984291344');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 
@@ -140,12 +128,11 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"
     <div id="formWrap">
       <div class="head">
         <span class="never"><i></i>Kathy never misses a call</span>
-        <h1>Try Kathy free for 7 days</h1>
-        <p>Answer a few questions and we will have your line running in as little as 24 hours. Nothing changes about how your team takes calls.</p>
+        <h1>Sign up and stop the spam calls</h1>
+        <p>Tell us what phone system you use and we will confirm your setup before anything changes on your line.</p>
       </div>
 
       <div class="embed" id="embed">
-        <!-- Skeleton, removed once the iframe reports ready -->
         <div class="skeleton" id="skeleton" aria-hidden="true">
           <div class="sk lbl"></div><div class="sk inp"></div>
           <div class="sk lbl"></div><div class="sk inp"></div>
@@ -174,7 +161,7 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"
       </div>
 
       <p class="embed-note">
-        By starting your trial you agree to our <a href="/terms">Terms</a>, <a href="/privacy">Privacy Policy</a>,
+        By signing up you agree to our <a href="/terms">Terms</a>, <a href="/privacy">Privacy Policy</a>,
         and <a href="/recording">Call Recording Notice</a>. Kathy answers inbound calls only.
         She tells every caller she is an automated assistant and that the call may be recorded.
       </p>
@@ -183,8 +170,8 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"
     <div class="done" id="done" role="status" aria-live="polite">
       <div class="big">✓</div>
       <h2>You're in.</h2>
-      <p>Check your email in the next few minutes. It has the exact steps to send your calls to Kathy, for your specific phone company.</p>
-      <p>Most lines are running within 24 hours. If anything looks wrong, that email has a number you can call and a person will pick up.</p>
+      <p>Check your email in the next few minutes. We will confirm your phone system and the exact steps to send your calls to Kathy.</p>
+      <p>If anything looks wrong, that email has a number you can call and a person will pick up.</p>
       <a href="index.html" class="btn ghost">Back to the homepage</a>
     </div>
   </div>
@@ -192,21 +179,16 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"
   <aside class="rail">
     <h3>What happens next</h3>
     <ul>
-      <li><b>Right now.</b> We set Kathy up on a screening number for your business.</li>
-      <li><b>Within an hour.</b> You get an email with three steps for your exact phone company.</li>
-      <li><b>Within 24 hours.</b> Your line is live. Nothing about your number or your process changes.</li>
+      <li><b>Right now.</b> You tell us what phone company and phone system you use.</li>
+      <li><b>Within an hour.</b> We confirm your line is a fit and send you the exact steps for your setup.</li>
+      <li><b>When you say go.</b> Kathy starts screening. Nothing about your number or your process changes.</li>
       <li><b>Every Monday.</b> An email showing what she stopped and what she passed through.</li>
-      <li><b>Day 5.</b> We tell you what your line really looks like. Then you decide.</li>
     </ul>
     <p class="timeline">
-      Free for <b>7 days</b><br>
       Live in as little as <b>24 hours</b><br>
+      Works with <b>most phone systems</b><br>
       Cancel <b>any time</b>
     </p>
-    <div class="call">
-      <p>Would rather talk to a person first?</p>
-      <a href="mailto:info@spamkathy.com?subject=Talk%20to%20sales" class="btn ghost">Talk to sales</a>
-    </div>
   </aside>
 </div>
 
@@ -214,13 +196,12 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"
   <div class="foot-in">
     <span>© 2026 Spam Kathy · Dallas Fort Worth, Texas</span>
     <span>
-      <a href="index.html">Home</a><a href="index.html#pricing">Pricing</a><a href="mailto:info@spamkathy.com">Contact</a>
+      <a href="index.html">Home</a><a href="mailto:info@spamkathy.com">Contact</a>
       <a href="/terms">Terms</a><a href="/privacy">Privacy</a>
     </span>
   </div>
 </footer>
 
-<!-- GHL resize + submit bridge. Must load after the iframe. -->
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 
 <script>
@@ -229,45 +210,31 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"
   var iframe  = document.getElementById('inline-' + FORM_ID);
   var skel    = document.getElementById('skeleton');
 
-  /* ─────────────────────────────────────────────────────────
-     1. PREFILL + ATTRIBUTION
-     GHL prefills a form field when its query key appears on the
-     widget URL. The keys below must match the *Query Key* set on
-     each field inside the GHL form builder. Edit the right-hand
-     side only.
-     ───────────────────────────────────────────────────────── */
   var FIELD_KEYS = {
-    email : 'email',          // GHL standard field
-    phone : 'phone',          // GHL standard field
+    email : 'email',
+    phone : 'phone',
     utm_source   : 'utm_source',
     utm_medium   : 'utm_medium',
     utm_campaign : 'utm_campaign',
     utm_content  : 'utm_content',
-    fbclid       : 'fbclid',
-    plan         : 'plan'     // custom field, if you add one
+    fbclid       : 'fbclid'
   };
 
   var qs  = new URLSearchParams(location.search);
   var url = new URL(iframe.src);
 
-  // email + phone come across from the homepage hero
   if(qs.get('email')) url.searchParams.set(FIELD_KEYS.email, qs.get('email'));
   if(qs.get('phone')){
     var d = qs.get('phone').replace(/\D/g,'');
     if(d.length === 10) url.searchParams.set(FIELD_KEYS.phone, '+1' + d);
   }
-  if(qs.get('plan')) url.searchParams.set(FIELD_KEYS.plan, qs.get('plan'));
 
   ['utm_source','utm_medium','utm_campaign','utm_content','fbclid'].forEach(function(k){
     if(qs.get(k)) url.searchParams.set(FIELD_KEYS[k], qs.get(k));
   });
 
-  // Only reassign if something changed, so we don't force a second load.
   if(url.toString() !== iframe.src) iframe.src = url.toString();
 
-  /* ─────────────────────────────────────────────────────────
-     2. SHOW THE FORM, DROP THE SKELETON
-     ───────────────────────────────────────────────────────── */
   function reveal(){
     if(iframe.classList.contains('ready')) return;
     iframe.classList.add('ready');
@@ -275,15 +242,8 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"
     setTimeout(function(){ skel.style.display = 'none'; }, 320);
   }
   iframe.addEventListener('load', reveal);
-  setTimeout(reveal, 3500); // safety net if load never fires
+  setTimeout(reveal, 3500);
 
-  /* ─────────────────────────────────────────────────────────
-     3. SUBMIT BRIDGE
-     form_embed.js posts a message to the parent on submit. GHL has
-     changed the payload shape more than once, so we match loosely.
-     Open the console, submit a test lead, and read the logged event
-     if you want to tighten this.
-     ───────────────────────────────────────────────────────── */
   function isSubmit(data){
     if(!data) return false;
     if(typeof data === 'string') return /form.?submit/i.test(data);
@@ -294,25 +254,14 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"
   var fired = false;
   window.addEventListener('message', function(e){
     if(!/leadconnectorhq\.com|msgsndr\.com/.test(e.origin)) return;
-    console.log('[ghl message]', e.origin, e.data);
     if(fired || !isSubmit(e.data)) return;
     fired = true;
     onSubmitted();
   });
 
   function onSubmitted(){
-    // Conversion pixels. Both guarded, so nothing breaks if absent.
-    if(typeof fbq === 'function') fbq('track', 'StartTrial', {content_name: 'spam_kathy_7day'});
+    if(typeof fbq === 'function') fbq('track', 'Lead', {content_name: 'spam_kathy_signup'});
     if(typeof gtag === 'function') gtag('event', 'sign_up', {method: 'ghl_form'});
-
-    /* TAKING A CARD
-       This form is a lead form. It does not collect payment.
-       To start a real 7 day trial with a card on file, do ONE of:
-         (a) In GHL: Form settings > On Submit > Redirect, and point it at a
-             Stripe Checkout Session created with trial_period_days: 7; or
-         (b) Replace this embed with a GHL Order Form with Stripe attached.
-       If you pick (a), GHL handles the redirect and the block below never runs.  */
-
     document.getElementById('formWrap').style.display = 'none';
     document.getElementById('done').style.display = 'block';
     scrollTo({top: 0, behavior: 'smooth'});
