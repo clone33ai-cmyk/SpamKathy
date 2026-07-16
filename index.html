@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Spam Kathy — She answers the spam. Your customers get through.</title>
-<meta name="description" content="Kathy answers your business phone, stops the spam, and rings you when it's a real customer. She never misses a call. Try free for 7 days.">
-<meta property="og:title" content="Kathy answers the spam. Your customers get through.">
-<meta property="og:description" content="She never misses a call. Most phone systems live in 24 hours. Try free for 7 days.">
+<title>Spam Kathy · She answers your business phone and blocks the spam calls.</title>
+<meta name="description" content="Spam Kathy answers your business phone and blocks the spam calls. Real customers ring through like always. Works with most phone systems.">
+<meta property="og:title" content="Spam Kathy answers your business phone and blocks the spam calls.">
+<meta property="og:description" content="Real customers ring through like always. Works with most phone systems.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Instrument+Sans:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -14,8 +14,9 @@
 :root{
   --green-900:#0A5138; --green:#0E7C55; --green-600:#12A66F;
   --green-50:#E9F5EF; --green-25:#F3FAF6;
+  --red-900:#8C2A18; --red:#C7422B; --red-600:#E04A2F; --red-25:#FDF1EE; --red-50:#FBE4DE;
   --ink:#0F1418; --ink-2:#39444A; --muted:#5C686D;
-  --paper:#FFFFFF; --paper-2:#F6F9F7; --line:#E4E9E6; --line-2:#CDD6D1; --ghost:#D3DAD6;
+  --paper:#FFFFFF; --paper-2:#F6F9F7; --line:#E4E9E6; --line-2:#CDD6D1;
   --display:'Outfit',system-ui,sans-serif;
   --body:'Instrument Sans',system-ui,sans-serif;
   --mono:'JetBrains Mono',ui-monospace,monospace;
@@ -28,61 +29,43 @@ body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:
 a{color:inherit}
 :focus-visible{outline:3px solid var(--green-600);outline-offset:3px;border-radius:4px}
 .wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+section{padding:clamp(52px,6vw,92px) 0}
 
-h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.03em;line-height:1.04;color:var(--ink)}
-h1{font-size:clamp(38px,6vw,72px);letter-spacing:-.038em}
-h2{font-size:clamp(28px,4vw,46px)}
-h3{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.02em}
-
-.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.19em;text-transform:uppercase;color:var(--green);display:block;margin-bottom:16px;font-weight:600}
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.03em;line-height:1.06;color:var(--ink)}
+h1{font-size:clamp(34px,4.6vw,52px);letter-spacing:-.035em}
+h2{font-size:clamp(26px,3.6vw,40px)}
+h3{font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.02em}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.19em;text-transform:uppercase;color:var(--green);display:block;margin-bottom:14px;font-weight:600}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--green);color:#fff;
   font-family:var(--display);font-weight:600;font-size:16.5px;line-height:1;padding:18px 28px;border:none;border-radius:8px;
-  cursor:pointer;text-decoration:none;transition:background .14s,transform .12s,box-shadow .14s;box-shadow:0 1px 2px rgba(10,81,56,.18)}
-.btn:hover{background:var(--green-900);transform:translateY(-1px);box-shadow:0 10px 24px -10px rgba(10,81,56,.5)}
+  cursor:pointer;text-decoration:none;transition:background .14s,transform .12s}
+.btn:hover{background:var(--green-900);transform:translateY(-1px)}
 .btn.lg{font-size:18px;padding:21px 34px}
 .btn.white{background:#fff;color:var(--green-900)}
 .btn.white:hover{background:var(--green-25)}
 
-#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--green-600);z-index:200;transition:width .08s linear}
-
 .nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:66px;gap:20px}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.03em;text-decoration:none}
 .brand .mark{width:20px;height:20px;border-radius:50%;border:2.5px solid var(--green-600);flex:none;position:relative}
 .brand .mark::after{content:"";position:absolute;inset:4.5px;border-radius:50%;background:var(--green-600);animation:pulse 1.8s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
 .nav .btn{padding:12px 20px;font-size:15px}
 
-/* ── HERO ── */
-.hero{padding:clamp(46px,6vw,88px) 0 clamp(46px,5vw,80px);background:linear-gradient(180deg,var(--green-25),var(--paper) 70%)}
-.hero-grid{display:grid;grid-template-columns:1fr;gap:clamp(28px,3.5vw,40px);align-items:start;max-width:620px}
-.never{display:inline-flex;align-items:center;gap:9px;background:var(--green-50);border:1px solid #CFE7DC;color:var(--green-900);
-  border-radius:999px;padding:8px 16px 8px 13px;font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:600}
-.never i{width:7px;height:7px;border-radius:50%;background:var(--green-600);flex:none;animation:pulse 1.8s infinite}
-.hero h1{margin:20px 0 0}
-.hero h1 .hl{color:var(--green)}
-.hero .lede{font-size:clamp(17.5px,1.6vw,20px);color:var(--ink-2);max-width:32em;margin:22px 0 28px}
-.hero .lede b{color:var(--ink);font-weight:600}
-.hero-facts{display:flex;gap:22px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--muted);font-weight:600}
+/* HERO */
+.hero{padding:clamp(44px,5vw,76px) 0 clamp(44px,5vw,72px);background:linear-gradient(180deg,var(--green-25),var(--paper) 72%)}
+.hero-grid{display:grid;grid-template-columns:1fr;gap:clamp(28px,3.5vw,44px);align-items:center}
+@media(min-width:900px){.hero-grid{grid-template-columns:1.05fr .95fr;gap:clamp(36px,4vw,56px)}}
+.batch{display:inline-flex;align-items:center;gap:9px;background:var(--green-50);border:1px solid #CFE7DC;color:var(--green-900);
+  border-radius:999px;padding:8px 16px 8px 13px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;margin-bottom:20px}
+.batch i{width:7px;height:7px;border-radius:50%;background:var(--green-600);flex:none;animation:pulse 1.8s infinite}
+.hero .lede{font-size:clamp(17.5px,1.6vw,19.5px);color:var(--ink-2);max-width:34em;margin:20px 0 24px}
+.hero-facts{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--muted);font-weight:600;margin-bottom:26px}
 .hero-facts span{display:flex;align-items:center;gap:7px}
 .hero-facts span::before{content:"✓";color:var(--green-600);font-weight:700;font-family:var(--body)}
 
-.signup-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:0 26px 60px -34px rgba(15,20,24,.32);max-width:100%}
-.signup-box h3{margin-bottom:6px}
-.signup-box .sub{color:var(--muted);font-size:14.5px;margin-bottom:20px}
-.sfield{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
-.sfield label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.sfield input{background:#fff;border:1.5px solid var(--line-2);border-radius:8px;padding:16px 14px;font-family:var(--body);font-size:16px;color:var(--ink);width:100%}
-.sfield input::placeholder{color:#9AA5A0}
-.sfield input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 4px var(--green-50)}
-.signup-box .btn{width:100%;margin-top:6px}
-.signup-box .fine{margin-top:14px;text-align:center;font-size:13.5px;color:var(--muted)}
-.signup-box .err{display:none;color:#C7422B;font-family:var(--mono);font-size:12px;font-weight:600;margin-top:-6px;margin-bottom:12px}
-.signup-box.bad .err{display:block}
-.signup-box.bad input.miss{border-color:#C7422B}
-
-/* live log */
+/* LIVE LOG */
 .log{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:0 34px 80px -44px rgba(15,20,24,.35)}
 .log-head{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;border-bottom:1px solid var(--line);background:var(--paper-2)}
 .log-title{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
@@ -95,111 +78,120 @@ h3{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.02
 .row .t{color:#93A09A;font-size:11px}
 .row .who{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .row .tag{font-size:9.5px;letter-spacing:.13em;font-weight:600}
-.row.screened .who{color:#A6B0AB;text-decoration:line-through}
-.row.screened .tag{color:#B7BFBA}
+.row.screened{background:var(--red-25);box-shadow:inset 3px 0 0 var(--red-600)}
+.row.screened .who{color:#A8837B;text-decoration:line-through}
+.row.screened .tag{color:var(--red)}
 .row.passed{background:var(--green-25);box-shadow:inset 3px 0 0 var(--green-600)}
 .row.passed .who{color:var(--ink);font-weight:600}
 .row.passed .tag{color:var(--green)}
 .log-foot{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);background:var(--paper-2)}
 .log-foot .s{padding:16px 18px}
 .log-foot .s+.s{border-left:1px solid var(--line)}
-.log-foot b{display:block;font-family:var(--display);font-size:25px;font-weight:700;line-height:1;color:var(--muted);letter-spacing:-.02em}
+.log-foot b{display:block;font-family:var(--display);font-size:25px;font-weight:700;line-height:1;letter-spacing:-.02em}
+.log-foot .s.spam b{color:var(--red)}
 .log-foot .s.pass b{color:var(--green)}
 .log-foot span{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:500}
 
-/* ── PROOF ── */
-.proof{background:var(--ink);color:#fff;padding:clamp(40px,5vw,64px) 0}
-.proof .lead{text-align:center;max-width:40ch;margin:0 auto clamp(30px,4vw,44px)}
-.proof .lead .eyebrow{color:var(--green-600)}
-.proof .lead h2{color:#fff}
-.proof .lead p{color:#B7C2C0;margin-top:14px;font-size:16.5px}
-.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#232B30;border-radius:var(--r);overflow:hidden}
+/* PROBLEM */
+.problem{background:var(--ink);color:#fff}
+.problem h2{color:#fff;max-width:22ch}
+.problem .lead{max-width:46ch;margin-bottom:clamp(28px,3.5vw,40px)}
+.problem .eyebrow{color:var(--red-600)}
+.problem .lead p{color:#B7C2C0;margin-top:14px;font-size:16.5px}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#232B30;border-radius:var(--r);overflow:hidden}
+@media(max-width:760px){.pgrid{grid-template-columns:1fr}}
+.pgrid div{background:var(--ink);padding:26px 24px}
+.pgrid h3{color:#fff;margin-bottom:8px}
+.pgrid p{color:#8D9AA0;font-size:15px;line-height:1.6}
+
+/* PROOF */
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-radius:var(--r);overflow:hidden;border:1px solid var(--line)}
 @media(max-width:760px){.proof-grid{grid-template-columns:repeat(2,1fr)}}
-.proof-grid div{background:var(--ink);padding:30px 24px;text-align:center}
-.proof-grid b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(30px,3.6vw,44px);line-height:1;color:var(--green-600);letter-spacing:-.04em;margin-bottom:10px}
-.proof-grid span{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:#8D9AA0;font-weight:500;line-height:1.6;display:block}
-.proof-foot{text-align:center;margin-top:clamp(28px,3vw,40px)}
-.proof-foot .btn{background:#fff;color:var(--green-900)}
-.proof-foot .btn:hover{background:var(--green-25)}
-.proof-foot .cap{display:block;margin-top:16px;font-family:var(--mono);font-size:10.5px;color:#8D9AA0;letter-spacing:.06em;line-height:1.7}
+.proof-grid div{background:#fff;padding:28px 22px;text-align:center}
+.proof-grid b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(28px,3.4vw,40px);line-height:1;color:var(--green);letter-spacing:-.04em;margin-bottom:9px}
+.proof-grid div.spam b{color:var(--red)}
+.proof-grid span{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:500;line-height:1.6;display:block}
+.cap{display:block;text-align:center;margin-top:22px;font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.05em;line-height:1.8;max-width:70ch;margin-left:auto;margin-right:auto}
 
-/* ── PRICING ── */
-section{padding:clamp(58px,6.5vw,100px) 0}
-.sec-head{max-width:52ch;margin:0 auto clamp(30px,4vw,48px);text-align:center}
-.sec-head p{color:var(--ink-2);margin-top:14px;font-size:17px}
-.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
-@media(max-width:920px){.plans{grid-template-columns:1fr;max-width:460px;margin:0 auto}}
-.plan{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px 26px;display:flex;flex-direction:column;position:relative}
-.plan.hot{border:1.5px solid var(--green);box-shadow:0 26px 60px -36px rgba(14,124,85,.7)}
-.plan.hot::before{content:"Most popular";position:absolute;top:-12px;left:24px;background:var(--green);color:#fff;font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;padding:6px 12px;border-radius:5px;font-weight:600}
-.plan .name{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:600}
-.plan .price{font-family:var(--display);font-weight:700;font-size:50px;line-height:1;margin:16px 0 0;letter-spacing:-.045em;color:var(--ink)}
-.plan .price .from{font-size:18px;font-weight:600;color:var(--muted);letter-spacing:-.01em;margin-right:4px;vertical-align:middle}
-.plan .price sup{font-size:23px;vertical-align:super;font-weight:600;margin-right:1px}
-.plan .per{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);margin-top:10px;line-height:1.5}
-.plan ul{list-style:none;margin:22px 0 26px;flex:1}
-.plan li{padding:11px 0 11px 26px;position:relative;font-size:15.5px;border-top:1px solid var(--line);color:var(--ink-2)}
-.plan li:first-child{border-top:none}
-.plan li::before{content:"✓";position:absolute;left:0;top:11px;color:var(--green);font-weight:700}
-.plan li b{color:var(--ink);font-weight:600}
-.plan .btn{width:100%}
-.price-foot{text-align:center;margin-top:28px;color:var(--muted);font-size:15.5px}
+/* CALCULATOR */
+#score{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.calc{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(22px,3vw,34px);max-width:720px;margin:0 auto;box-shadow:0 26px 60px -40px rgba(15,20,24,.3)}
+.q{margin-bottom:22px}
+.ql{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--body);font-size:14.5px;padding:9px 15px;border-radius:8px;border:1.5px solid var(--line-2);background:#fff;color:var(--ink-2);cursor:pointer;transition:all .12s}
+.chip:hover{border-color:var(--green)}
+.chip.on{background:var(--green-50);border-color:var(--green);color:var(--green-900);font-weight:600}
+input[type=range]{width:100%;accent-color:var(--green)}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:22px 0 14px}
+.bar{display:flex;height:44px;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.bar>div{transition:flex-grow .45s cubic-bezier(.2,.8,.2,1);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;font-weight:600}
+.bar-s{background:var(--red-50);color:var(--red-900)}
+.bar-p{background:var(--green-50);color:var(--green-900)}
+.bar-key{display:flex;justify-content:space-between;margin-top:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.stat{background:var(--paper-2);border-radius:8px;padding:18px 14px;text-align:center}
+.stat b{display:block;font-family:var(--display);font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1;margin-bottom:6px;color:var(--red)}
+.stat.n b{color:var(--ink)}
+.stat span{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
+#verdict{font-size:15.5px;color:var(--ink-2);line-height:1.65;min-height:3em}
+.calc-foot{border-top:1px solid var(--line);margin-top:22px;padding-top:22px;text-align:center}
+.calc-foot .btn{width:100%;max-width:360px}
+.calc-note{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.05em;margin-top:14px;line-height:1.7}
 
-/* ── FAQ ── */
+/* HOW */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:820px){.steps{grid-template-columns:1fr;max-width:460px;margin:0 auto}}
+.step{border:1px solid var(--line);border-radius:var(--r);padding:26px 24px}
+.step .n{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--green);font-weight:600;margin-bottom:12px;display:block}
+.step h3{margin-bottom:8px}
+.step p{color:var(--ink-2);font-size:15.5px;line-height:1.6}
+
+/* FAQ */
 .faq{max-width:760px;margin:0 auto}
 details{border-top:1px solid var(--line)}
 details:last-of-type{border-bottom:1px solid var(--line)}
-summary{cursor:pointer;list-style:none;padding:24px 46px 24px 0;position:relative;font-family:var(--display);font-weight:600;font-size:clamp(17px,1.7vw,20px);letter-spacing:-.02em}
+summary{cursor:pointer;list-style:none;padding:23px 46px 23px 0;position:relative;font-family:var(--display);font-weight:600;font-size:clamp(17px,1.7vw,19px);letter-spacing:-.02em}
 summary::-webkit-details-marker{display:none}
 summary:hover{color:var(--green)}
-summary::after{content:"+";position:absolute;right:8px;top:20px;font-family:var(--mono);font-size:24px;color:var(--green);font-weight:400}
+summary::after{content:"+";position:absolute;right:8px;top:19px;font-family:var(--mono);font-size:24px;color:var(--green);font-weight:400}
 details[open] summary{color:var(--green-900)}
 details[open] summary::after{content:"–"}
-details p{color:var(--ink-2);padding:0 40px 26px 0;font-size:16.5px;line-height:1.7}
+details p{color:var(--ink-2);padding:0 40px 24px 0;font-size:16.5px;line-height:1.7}
 @media(max-width:640px){details p{padding-right:0}}
 
-/* ── FINAL ── */
-#final{background:var(--green-900);text-align:center}
-#final h2{color:#fff;max-width:18ch;margin:0 auto}
-#final p{color:rgba(255,255,255,.82);font-size:18px;max-width:44ch;margin:20px auto 30px}
-#final .fine{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.62);letter-spacing:.11em;margin-top:20px;text-transform:uppercase;font-weight:500}
+/* LIST */
+#list{background:var(--green-900);text-align:center}
+#list h2{color:#fff;max-width:20ch;margin:0 auto}
+#list .sub{color:rgba(255,255,255,.82);font-size:18px;max-width:46ch;margin:18px auto 30px}
+.box{background:#fff;border-radius:var(--r);padding:26px;max-width:520px;margin:0 auto;text-align:left;box-shadow:0 30px 70px -40px rgba(0,0,0,.5)}
+.box .embed{position:relative;min-height:520px}
+.box .embed iframe{width:100%;min-height:510px;border:none;border-radius:8px;display:block;background:transparent;opacity:0;transition:opacity .35s ease}
+.box .embed iframe.ready{opacity:1}
+.box .skeleton{position:absolute;inset:0;pointer-events:none;transition:opacity .3s ease}
+.box .skeleton.gone{opacity:0}
+.sk{background:linear-gradient(90deg,#EEF2F0 25%,#F7FAF8 50%,#EEF2F0 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:8px}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.sk.lbl{height:11px;width:110px;margin-bottom:10px}
+.sk.inp{height:52px;margin-bottom:22px}
+.sk.btn{height:58px;width:100%;margin-top:8px}
+.box .done{display:none;text-align:center;padding:20px 0 6px}
+.box .done .big{width:48px;height:48px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:22px;font-weight:700;margin:0 auto 16px}
+.box .done p{color:var(--ink-2);font-size:14.5px}
+#list .fine{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.62);letter-spacing:.11em;margin-top:24px;text-transform:uppercase;font-weight:500}
 
-footer{background:var(--paper-2);border-top:1px solid var(--line);padding:40px 0 30px}
+footer{background:var(--paper-2);border-top:1px solid var(--line);padding:38px 0 28px}
 .foot-in{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
 .foot-brand{font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.03em}
-.foot-nav{display:flex;gap:26px;flex-wrap:wrap}
-.foot-nav a{color:var(--ink-2);text-decoration:none;font-size:15.5px;font-weight:500}
-.foot-nav a:hover{color:var(--green)}
-.legal{border-top:1px solid var(--line);margin-top:28px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;color:var(--muted);font-weight:500}
+.legal{border-top:1px solid var(--line);margin-top:26px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;color:var(--muted);font-weight:500}
 .legal a{color:var(--ink-2);text-decoration:underline;text-underline-offset:2px;margin-left:14px}
-
-#sticky{position:fixed;left:0;right:0;bottom:0;z-index:150;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:12px var(--pad) calc(12px + env(safe-area-inset-bottom));transform:translateY(120%);transition:transform .25s ease}
-#sticky.show{transform:none}
-#sticky .btn{width:100%}
-#sticky .tag{display:block;text-align:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-weight:600}
-@media(min-width:861px){#sticky{display:none}}
 
 .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
 .rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.live i,.never i,.brand .mark::after,.sk{animation:none}}
-
-.signup-box .embed{position:relative;min-height:520px}
-.signup-box .embed iframe{width:100%;min-height:510px;border:none;border-radius:8px;display:block;background:transparent;opacity:0;transition:opacity .35s ease}
-.signup-box .embed iframe.ready{opacity:1}
-.signup-box .skeleton{position:absolute;inset:0;pointer-events:none;transition:opacity .3s ease}
-.signup-box .skeleton.gone{opacity:0}
-.signup-box .sk{background:linear-gradient(90deg,#EEF2F0 25%,#F7FAF8 50%,#EEF2F0 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:8px}
-@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-.signup-box .sk.lbl{height:11px;width:110px;margin-bottom:10px;border-radius:3px}
-.signup-box .sk.inp{height:52px;margin-bottom:22px}
-.signup-box .sk.btn{height:58px;width:100%;margin-top:8px}
-.signup-box .done{display:none;text-align:center;padding:20px 0 6px}
-.signup-box .done .big{width:48px;height:48px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:22px;font-weight:700;margin:0 auto 16px}
-.signup-box .done h3{margin-bottom:10px}
-.signup-box .done p{color:var(--ink-2);font-size:14.5px;margin-bottom:6px}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.live i,.batch i,.brand .mark::after,.sk{animation:none}}
+.sec-head{max-width:52ch;margin:0 auto clamp(28px,3.5vw,44px);text-align:center}
+.sec-head p{color:var(--ink-2);margin-top:14px;font-size:17px}
 </style>
 
-<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -213,60 +205,195 @@ fbq('init', '1377211984291344');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
-
-<div id="progress"></div>
 
 <nav class="nav">
   <div class="wrap nav-in">
     <a href="#top" class="brand"><span class="mark"></span>Spam Kathy</a>
-    <a href="signup.html" class="btn" data-cta="nav">Try free for 7 days</a>
+    <a href="#list" class="btn" data-cta="nav">Sign up</a>
   </div>
 </nav>
 
-<!-- ══ PROOF ══ -->
-<div class="proof" id="proof">
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="batch"><i></i>Kathy never misses a call</span>
+      <h1>Spam Kathy answers your business phone and blocks the spam calls.</h1>
+      <p class="lede">Real customers ring through like always. Your team never hears the robocalls, the vendor pitches, or the guy who wants to lower your merchant fees.</p>
+      <div class="hero-facts">
+        <span>Works with most phone systems</span><span>Nothing changes for your team</span>
+      </div>
+      <a href="#list" class="btn lg" data-cta="hero">Sign up and stop the spam calls</a>
+    </div>
+
+    <div class="log" aria-label="Live call screening">
+      <div class="log-head">
+        <span class="log-title">Main line · (214) 555-0148</span>
+        <span class="live"><i></i>Kathy active</span>
+      </div>
+      <div class="log-body" id="logBody"></div>
+      <div class="log-foot">
+        <div class="s spam"><b id="cScreen">0</b><span>Spam stopped</span></div>
+        <div class="s pass"><b id="cPass">0</b><span>Rang your phone</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PROBLEM -->
+<section class="problem">
   <div class="wrap">
     <div class="lead rv">
+      <span class="eyebrow">Why it never stops</span>
+      <h2>Your number went public the second you advertised.</h2>
+      <p>Truck wrap, yard sign, Google, the door hanger. Every one of them put your number on a list, and the lists get sold.</p>
+    </div>
+    <div class="pgrid rv">
+      <div>
+        <h3>Blockers don't work</h3>
+        <p>They stop known numbers. Spammers rotate numbers daily and spoof local area codes to match yours.</p>
+      </div>
+      <div>
+        <h3>A new number doesn't either</h3>
+        <p>It's clean for about a month. Then you advertise it, because that's the whole point of having it.</p>
+      </div>
+      <div>
+        <h3>Your team stops picking up</h3>
+        <p>That's the real cost. After the eleventh robocall nobody reaches for the phone, and the twelfth call was a customer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
       <span class="eyebrow">Proven on a real phone line</span>
-      <h2>6,000 calls in 6 months. Half of them junk.</h2>
-      <p>Kathy ran on a busy pool repair line across eight DFW locations. In six months it took six thousand calls. Here's what she did with them.</p>
+      <h2>6,000 calls in 6 months. <span style="color:var(--red-600)">Half of them junk.</span></h2>
     </div>
     <div class="proof-grid rv">
-      <div><b>~2,600</b><span>Spam calls stopped</span></div>
+      <div class="spam"><b>~2,600</b><span>Spam calls stopped</span></div>
       <div><b>3,400</b><span>Real customers rang through</span></div>
       <div><b>&lt;24 hrs</b><span>From signup to live</span></div>
       <div><b>100%</b><span>Of calls answered</span></div>
     </div>
-    <div class="proof-foot rv">
-      <a href="signup.html" class="btn lg" data-cta="proof">See it on your line, free for 7 days</a>
-      <span class="cap">Every number pulled straight from the call logs. Ask and we'll show you the export.</span>
-    </div>
+    <span class="cap rv">Kathy ran first on Mr. Pool Leak Repair, a company owned by Spam Kathy's founder. That's why we have the logs. Ask and we'll show you the export.</span>
   </div>
-</div>
+</section>
 
+<!-- SPAM SCORE -->
+<section id="score">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Before you go</span>
+      <h2>What's your spam call percentage?</h2>
+      <p>Three questions. Nothing to fill in to see the number.</p>
+    </div>
 
+    <div class="calc rv">
+      <div class="q">
+        <span class="ql">Roughly how many calls a week?</span>
+        <div style="display:flex;align-items:center;gap:14px">
+          <input type="range" id="vol" min="20" max="400" step="10" value="120" aria-label="Calls per week">
+          <span id="volOut" style="font-family:var(--mono);font-size:14px;font-weight:600;min-width:56px;text-align:right">120</span>
+        </div>
+      </div>
 
-<!-- ══ HERO ══ -->
-<header class="hero" id="top">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="never"><i></i>Kathy never misses a call</span>
-      <h1>Kathy answers the spam.<br><span class="hl">Your customers get through.</span></h1>
-      <p class="lede">She picks up your business phone and knows in seconds whether it's spam or a real customer. Junk stops there. Real people ring straight through. <b>Your team answers calls the same way they always have.</b> Most phone systems are live in as little as 24 hours.</p>
-      <div class="hero-facts">
-        <span>7 days free</span><span>Works with most phone systems</span><span>Cancel any time</span>
+      <div class="q" style="margin-bottom:26px">
+        <span class="ql">Where is your number published? Pick all that apply.</span>
+        <div class="chips" id="ads">
+          <button class="chip on" data-v="8">Google</button>
+          <button class="chip" data-v="13">Local Services Ads</button>
+          <button class="chip" data-v="9">Directories</button>
+          <button class="chip" data-v="6">Truck or signage</button>
+          <button class="chip" data-v="3">Social</button>
+        </div>
+      </div>
+
+      <div class="bar" aria-hidden="true">
+        <div class="bar-s" id="barS"><span id="barSL">40%</span></div>
+        <div class="bar-p" id="barP"><span id="barPL">60%</span></div>
+      </div>
+      <div class="bar-key">
+        <span>Spam</span><span>Real customers</span>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b id="cnt">&mdash;</b><span>Junk calls a week</span></div>
+        <div class="stat n"><b id="hrs">&mdash;</b><span>Hours your team loses</span></div>
+      </div>
+      <p id="verdict"></p>
+
+      <div class="calc-foot">
+        <a href="#list" class="btn lg" data-cta="calc">Sign up and stop the spam calls</a>
+        <p class="calc-note">A range, not a measurement. Based on one DFW service line we counted and how widely your number is published. Your real number is whatever Kathy counts on your line.</p>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="signup-box" id="signupBox">
-      <h3>Try Kathy free for 7 days</h3>
-      <p class="sub">Tell us your phone system and see if you qualify for 24-hour setup.</p>
+<!-- HOW -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">How it works</span>
+      <h2>Three steps. Nothing changes for your team.</h2>
+    </div>
+    <div class="steps rv">
+      <div class="step">
+        <span class="n">01</span>
+        <h3>Kathy picks up first</h3>
+        <p>Every call to your business line reaches her before it reaches you. She answers instantly, every time, day or night.</p>
+      </div>
+      <div class="step">
+        <span class="n">02</span>
+        <h3>She figures out who it is</h3>
+        <p>Robocall, vendor pitch, silent line: it stops there. A real person asking about a repair, an estimate, or a bill goes straight through.</p>
+      </div>
+      <div class="step">
+        <span class="n">03</span>
+        <h3>Your phone rings like always</h3>
+        <p>Same phone, same team, same way you've always taken calls. The only difference is the junk stopped arriving.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- FAQ -->
+<section id="faq" style="background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">The question everyone asks</span>
+      <h2>Will Kathy ever stop a real customer?</h2>
+    </div>
+    <div class="faq rv">
+      <details open>
+        <summary>Will Kathy ever stop a real customer?</summary>
+        <p>If she isn't sure, she puts them through. Anyone who mentions a repair, an estimate, a bill, an appointment, or an emergency rings your phone right away. We would rather send you a telemarketer than lose you a job. And if she's ever wrong, the call is in your dashboard with a recording, so you can add that number to your allow list in two seconds.</p>
+      </details>
+      <details>
+        <summary>Does anything change about how we take calls?</summary>
+        <p>No. Your team answers the same phone, in the same place, the same way they always have. The only difference is the junk stopped coming through. We'll walk you through the exact setup for your system, and nothing changes on your end until you say go.</p>
+      </details>
+      <details>
+        <summary>How fast is setup?</summary>
+        <p>Most phone systems are live in as little as 24 hours, and many the same day. Kathy works with cell phones, landlines, and the major internet phone systems (VoIP). Tell us what you use when you sign up and we'll confirm your timeline before anything changes on your line.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- LIST -->
+<section id="list">
+  <div class="wrap">
+    <h2>Find out what's really hitting your line.</h2>
+    <p class="sub">Tell us what phone system you use and we'll confirm your setup before anything changes on your line.</p>
+
+    <div class="box" id="signupBox">
       <div class="embed" id="heroEmbed">
         <div class="skeleton" id="heroSkeleton" aria-hidden="true">
           <div class="sk lbl"></div><div class="sk inp"></div>
@@ -278,11 +405,8 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"
           id="inline-GGLAnOtQQQ9p2NFuiFWk"
           data-layout="{'id':'INLINE'}"
           data-trigger-type="alwaysShow"
-          data-trigger-value=""
           data-activation-type="alwaysActivated"
-          data-activation-value=""
           data-deactivation-type="neverDeactivate"
-          data-deactivation-value=""
           data-form-name="Form 3"
           data-height="510"
           data-layout-iframe-id="inline-GGLAnOtQQQ9p2NFuiFWk"
@@ -291,120 +415,14 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"
           loading="eager">
         </iframe>
       </div>
-
       <div class="done" id="heroDone" role="status" aria-live="polite">
         <div class="big">✓</div>
         <h3>You're in.</h3>
-        <p>Check your email in the next few minutes for setup steps.</p>
+        <p>Check your email in the next few minutes for next steps.</p>
       </div>
+    </div>
 
-      <p class="fine">No spam from us either. Cancel any time.</p>
-    </div>
-  </div>
-
-  <div class="wrap" style="margin-top:clamp(36px,4vw,56px)">
-    <div class="log" aria-label="Live call screening">
-      <div class="log-head">
-        <span class="log-title">Main line · (214) 555-0148</span>
-        <span class="live"><i></i>Kathy active</span>
-      </div>
-      <div class="log-body" id="logBody"></div>
-      <div class="log-foot">
-        <div class="s"><b id="cScreen">0</b><span>Spam stopped</span></div>
-        <div class="s pass"><b id="cPass">0</b><span>Rang your phone</span></div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<!-- ══ PRICING ── -->
-<section id="pricing">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow">Pricing</span>
-      <h2>Try free for 7 days. Pick a plan after.</h2>
-      <p>A front desk person in DFW costs $3,500 a month. Kathy is a rounding error.</p>
-    </div>
-    <div class="plans rv">
-      <div class="plan">
-        <div class="name">Solo</div>
-        <div class="price"><sup>$</sup>149</div>
-        <div class="per">Per month</div>
-        <ul>
-          <li>One business line</li>
-          <li><b>300</b> connected calls a month</li>
-          <li>Unlimited spam stopped</li>
-          <li>Messages sent to you</li>
-          <li>Live dashboard and recordings</li>
-        </ul>
-        <a href="signup.html?plan=solo" class="btn" data-cta="plan-solo">Try free for 7 days</a>
-      </div>
-      <div class="plan hot">
-        <div class="name">Crew</div>
-        <div class="price"><sup>$</sup>399</div>
-        <div class="per">Per month</div>
-        <ul>
-          <li>Up to <b>five</b> business lines</li>
-          <li><b>1,000</b> connected calls a month</li>
-          <li>Unlimited spam stopped</li>
-          <li>Different rules per number</li>
-          <li>After-hours handling</li>
-        </ul>
-        <a href="signup.html?plan=crew" class="btn" data-cta="plan-crew">Try free for 7 days</a>
-      </div>
-      <div class="plan">
-        <div class="name">Fleet</div>
-        <div class="price"><span class="from">From</span><sup>$</sup>99</div>
-        <div class="per">Per line, per month</div>
-        <ul>
-          <li>Six or more business lines</li>
-          <li>Volume pricing across locations</li>
-          <li>Unlimited spam stopped</li>
-          <li>Reporting per location</li>
-          <li>Dedicated onboarding and support</li>
-        </ul>
-        <a href="mailto:info@spamkathy.com?subject=Fleet%20plan%20-%20Talk%20to%20sales" class="btn ghost" data-cta="plan-fleet">Talk to sales</a>
-      </div>
-    </div>
-    <p class="price-foot rv">No contract. Cancel any time. Paying yearly gets you two months free.</p>
-  </div>
-</section>
-
-<!-- ══ ONE OBJECTION ══ -->
-<section id="faq" style="background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-  <div class="wrap">
-    <div class="sec-head rv">
-      <span class="eyebrow">The question everyone asks</span>
-      <h2>Will Kathy ever stop a real customer?</h2>
-    </div>
-    <div class="faq rv">
-      <details open>
-        <summary>Will Kathy ever stop a real customer?</summary>
-        <p>If she isn't sure, she puts them through. Anyone who mentions a repair, an estimate, a bill, an appointment, or an emergency rings your phone right away. We would rather send you a telemarketer than lose you a job. And if she's ever wrong, the call is sitting in your dashboard with a recording, so you can hear exactly what happened and add that number to your allow list in two seconds.</p>
-      </details>
-      <details>
-        <summary>Does anything change about how we take calls?</summary>
-        <p>No. Your team answers the same phone, in the same place, the same way they always have. The only difference is the junk stopped coming through. Depending on your phone system, we either screen the line you already have or set up a screening number that feeds into it. We'll walk you through the exact setup for your system, and nothing changes on your end until you say go.</p>
-      </details>
-      <details>
-        <summary>How fast is setup?</summary>
-        <p>Most phone systems qualify for setup in as little as 24 hours, and many are running the same day. A few setups need an extra step on our end, which can take a little longer. Kathy works with cell phones, landlines, and the major internet phone systems (VoIP). Tell us what you use when you sign up and we'll confirm your timeline before anything changes on your line.</p>
-      </details>
-      <details>
-        <summary>Can I cancel?</summary>
-        <p>Any time, in one click. Your line goes back to exactly how it was, instantly. There's no contract to get out of.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- ══ FINAL ══ -->
-<section id="final">
-  <div class="wrap">
-    <h2>Kathy never misses a call.</h2>
-    <p>Find out what's really hitting your line. Try her free for seven days.</p>
-    <a href="signup.html" class="btn lg white" data-cta="final">Try Kathy free for 7 days</a>
-    <p class="fine">Works with most phone systems · Cancel any time</p>
+    <p class="fine">No card · Cancel any time · Works with most phone systems</p>
   </div>
 </section>
 
@@ -412,12 +430,7 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"
   <div class="wrap">
     <div class="foot-in">
       <span class="foot-brand">Spam Kathy</span>
-      <nav class="foot-nav">
-        <a href="#top">Home</a>
-        <a href="signup.html">Sign up</a>
-        <a href="#pricing">Pricing</a>
-        <a href="mailto:info@spamkathy.com">Contact</a>
-      </nav>
+      <a href="#list" style="color:var(--ink-2);text-decoration:none;font-size:15.5px;font-weight:500">Sign up</a>
     </div>
     <div class="legal">
       <span>© 2026 Spam Kathy · Dallas Fort Worth, Texas · Inbound only, recording disclosed on every call</span>
@@ -426,34 +439,16 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"
   </div>
 </footer>
 
-<div id="sticky">
-  <span class="tag">Kathy never misses a call</span>
-  <a href="signup.html" class="btn lg" data-cta="sticky">Try free for 7 days</a>
-</div>
-
 <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 <script>
 (function(){
   var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var SIGNUP_URL = 'signup.html';
-  var LEAD_WEBHOOK = null;   // 'https://services.leadconnectorhq.com/hooks/XXXX'
-
-  var prog = document.getElementById('progress');
-  addEventListener('scroll', function(){
-    var h = document.documentElement.scrollHeight - innerHeight;
-    prog.style.width = (h>0 ? (scrollY/h)*100 : 0) + '%';
-  }, {passive:true});
-
-  var sticky = document.getElementById('sticky');
-  new IntersectionObserver(function(e){ sticky.classList.toggle('show', !e[0].isIntersecting); },
-    {threshold:0}).observe(document.getElementById('top'));
 
   var rvObs = new IntersectionObserver(function(es){
     es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); rvObs.unobserve(e.target); } });
   }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.rv').forEach(function(el){ rvObs.observe(el); });
 
-  /* live log — ratio matches the proof: ~43% spam, ~57% real */
   var feed = [
     {who:'SOLAR SAVINGS TX',      pass:false},
     {who:'Marcus Whitfield',      pass:true },
@@ -487,33 +482,62 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"
   if(reduced){ feed.slice(0,9).reverse().forEach(add); }
   else { feed.slice(0,4).reverse().forEach(add); i=4; setInterval(function(){ add(feed[i%feed.length]); i++; }, 1900); }
 
-  /* hero GHL embed: prefill UTMs, reveal on load, listen for submit */
-  var qs = new URLSearchParams(location.search);
-  (function(){
-    var FORM_ID = 'GGLAnOtQQQ9p2NFuiFWk';
-    var heroFrame = document.getElementById('inline-' + FORM_ID);
-    var heroSkel  = document.getElementById('heroSkeleton');
-    if(!heroFrame) return;
+  var vol=120, scored=false;
+  function chans(){
+    return [].slice.call(document.querySelectorAll('#ads .chip.on')).map(function(c){ return +c.dataset.v; });
+  }
+  function calc(){
+    var c=chans(), sum=c.reduce(function(a,b){return a+b},0);
+    var lo=Math.min(58, 18+sum), hi=Math.min(68, lo+9), mid=(lo+hi)/2;
+    var junk=Math.round(vol*mid/100);
+    var hrs=Math.round(junk*0.75/60*10)/10;
+    document.getElementById('barS').style.flexGrow=mid;
+    document.getElementById('barP').style.flexGrow=100-mid;
+    document.getElementById('barSL').textContent=lo+'-'+hi+'%';
+    document.getElementById('barPL').textContent=Math.round(100-hi)+'-'+Math.round(100-lo)+'%';
+    document.getElementById('cnt').textContent=junk.toLocaleString();
+    document.getElementById('hrs').textContent=hrs;
+    document.getElementById('volOut').textContent=vol+(vol===400?'+':'');
+    var v=document.getElementById('verdict');
+    if(c.length===0) v.textContent='Nowhere published is rare. Most numbers leak somewhere, and once one list has it, it never comes off.';
+    else if(sum>=20) v.textContent='Your number is in the places spammers scrape hardest. That is the trade you made to get real customers, and nobody told you the price.';
+    else v.textContent='Every place you publish your number adds another source. The lists get sold, and they do not expire.';
+  }
+  function track(){
+    if(scored) return; scored=true;
+    if(typeof fbq==='function') fbq('trackCustom','SpamScore',{channels:chans().length, volume:vol});
+  }
+  document.getElementById('ads').addEventListener('click', function(e){
+    var b=e.target.closest('.chip'); if(!b) return;
+    b.classList.toggle('on'); calc(); track();
+  });
+  document.getElementById('vol').addEventListener('input', function(){ vol=+this.value; calc(); track(); });
+  calc();
 
-    var heroUrl = new URL(heroFrame.src);
+  var qs = new URLSearchParams(location.search);
+  var FORM_ID = 'GGLAnOtQQQ9p2NFuiFWk';
+  var frame = document.getElementById('inline-' + FORM_ID);
+  var skel  = document.getElementById('heroSkeleton');
+  if(frame){
+    var u = new URL(frame.src);
     ['utm_source','utm_medium','utm_campaign','utm_content','fbclid'].forEach(function(k){
-      if(qs.get(k)) heroUrl.searchParams.set(k, qs.get(k));
+      if(qs.get(k)) u.searchParams.set(k, qs.get(k));
     });
-    if(heroUrl.toString() !== heroFrame.src) heroFrame.src = heroUrl.toString();
+    if(u.toString() !== frame.src) frame.src = u.toString();
 
     function reveal(){
-      if(heroFrame.classList.contains('ready')) return;
-      heroFrame.classList.add('ready');
-      heroSkel.classList.add('gone');
-      setTimeout(function(){ heroSkel.style.display = 'none'; }, 320);
+      if(frame.classList.contains('ready')) return;
+      frame.classList.add('ready');
+      skel.classList.add('gone');
+      setTimeout(function(){ skel.style.display='none'; }, 320);
     }
-    heroFrame.addEventListener('load', reveal);
+    frame.addEventListener('load', reveal);
     setTimeout(reveal, 3500);
 
-    function isSubmit(data){
-      if(!data) return false;
-      if(typeof data === 'string') return /form.?submit/i.test(data);
-      var t = data.type || data.event || data.action || '';
+    function isSubmit(d){
+      if(!d) return false;
+      if(typeof d === 'string') return /form.?submit/i.test(d);
+      var t = d.type || d.event || d.action || '';
       return /form.?submit|submit.?success|onFormSubmit/i.test(String(t));
     }
     var fired = false;
@@ -521,18 +545,9 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"
       if(!/leadconnectorhq\.com|msgsndr\.com/.test(e.origin)) return;
       if(fired || !isSubmit(e.data)) return;
       fired = true;
-      if(typeof fbq === 'function') fbq('track', 'StartTrial', {content_name: 'spam_kathy_7day'});
-      document.getElementById('heroEmbed').style.display = 'none';
-      document.getElementById('heroDone').style.display = 'block';
-    });
-  })();
-
-  /* carry tags onto plain signup links */
-  var carry = new URLSearchParams();
-  ['utm_source','utm_medium','utm_campaign','utm_content','fbclid'].forEach(function(k){ if(qs.get(k)) carry.set(k,qs.get(k)); });
-  if([...carry].length){
-    document.querySelectorAll('a[href^="'+SIGNUP_URL+'"]').forEach(function(a){
-      var u=new URL(a.getAttribute('href'), location.href); carry.forEach(function(v,k){ u.searchParams.set(k,v); }); a.setAttribute('href', u.pathname.replace(/^\//,'') + u.search);
+      if(typeof fbq === 'function') fbq('track','Lead',{content_name:'spam_kathy_signup'});
+      document.getElementById('heroEmbed').style.display='none';
+      document.getElementById('heroDone').style.display='block';
     });
   }
 })();
