@@ -190,6 +190,36 @@ footer{background:var(--paper-2);border-top:1px solid var(--line);padding:38px 0
 @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none}.live i,.batch i,.brand .mark::after,.sk{animation:none}}
 .sec-head{max-width:52ch;margin:0 auto clamp(28px,3.5vw,44px);text-align:center}
 .sec-head p{color:var(--ink-2);margin-top:14px;font-size:17px}
+
+/* REAL CALLS */
+.calls-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(max-width:760px){.calls-grid{grid-template-columns:1fr;max-width:460px;margin:0 auto}}
+.call-card{border:1px solid var(--line);border-radius:var(--r);padding:26px 24px;background:#fff}
+.call-card.spam{box-shadow:inset 3px 0 0 var(--red-600)}
+.call-card.real{box-shadow:inset 3px 0 0 var(--green-600)}
+.call-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.call-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;font-weight:600;padding:4px 9px;border-radius:999px}
+.call-card.spam .call-tag{color:var(--red-900);background:var(--red-25)}
+.call-card.real .call-tag{color:var(--green-900);background:var(--green-50)}
+.call-len{font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:500}
+.call-card h3{margin-bottom:6px}
+.call-card p{color:var(--ink-2);font-size:15px;line-height:1.55;margin-bottom:18px}
+.player{display:flex;align-items:center;gap:14px}
+.play-btn{flex:none;width:42px;height:42px;border-radius:50%;border:none;cursor:pointer;
+  display:grid;place-items:center;background:var(--ink);color:#fff;transition:background .14s,transform .12s}
+.play-btn:hover{transform:scale(1.05)}
+.play-btn svg{width:12px;height:14px;fill:currentColor}
+.play-btn .ico-pause{display:none}
+.play-btn.playing .ico-play{display:none}
+.play-btn.playing .ico-pause{display:block}
+.call-card.spam .play-btn{background:var(--red)}
+.call-card.real .play-btn{background:var(--green)}
+.wave{flex:1;display:flex;align-items:center;gap:2.5px;height:32px;cursor:pointer;outline-offset:4px}
+.wave i{flex:1;min-width:2px;background:var(--line-2);border-radius:2px;transition:background .15s;align-self:center}
+.wave i.on{background:var(--ink-2)}
+.call-card.spam .wave i.on{background:var(--red)}
+.call-card.real .wave i.on{background:var(--green)}
+.t-el{flex:none;font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:600;min-width:34px;text-align:right}
 </style>
 
 <script>
@@ -284,6 +314,131 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"/></
     <span class="cap rv">Kathy ran first on Mr. Pool Leak Repair, a company owned by Spam Kathy's founder. That's why we have the logs. Ask and we'll show you the export.</span>
   </div>
 </section>
+
+<!-- ══ REAL CALLS ══ -->
+<section id="calls">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Real recordings</span>
+      <h2>Press play.</h2>
+    </div>
+
+    <div class="calls-grid rv">
+
+      <div class="call-card spam">
+        <div class="call-top">
+          <span class="call-tag">Stopped</span>
+          <span class="call-len">0:41</span>
+        </div>
+        <h3>A spam call</h3>
+        <p>Kathy answers. It ends there.</p>
+        <div class="player" data-src="audio/spam-call.mp3">
+          <button class="play-btn" aria-label="Play the spam call recording">
+            <svg class="ico-play" viewBox="0 0 12 14"><path d="M0 0l12 7-12 7z"/></svg>
+            <svg class="ico-pause" viewBox="0 0 12 14"><path d="M0 0h4v14H0zM8 0h4v14H8z"/></svg>
+          </button>
+          <div class="wave" role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+          <span class="t-el">0:41</span>
+        </div>
+      </div>
+
+      <div class="call-card real">
+        <div class="call-top">
+          <span class="call-tag">Connected</span>
+          <span class="call-len">1:08</span>
+        </div>
+        <h3>A real customer</h3>
+        <p>She got through. This was her reaction.</p>
+        <div class="player" data-src="audio/customer-call.mp3">
+          <button class="play-btn" aria-label="Play the customer call recording">
+            <svg class="ico-play" viewBox="0 0 12 14"><path d="M0 0l12 7-12 7z"/></svg>
+            <svg class="ico-pause" viewBox="0 0 12 14"><path d="M0 0h4v14H0zM8 0h4v14H8z"/></svg>
+          </button>
+          <div class="wave" role="slider" tabindex="0" aria-label="Seek" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+          <span class="t-el">1:08</span>
+        </div>
+      </div>
+
+    </div>
+
+    <span class="cap">Real recordings from a live business line, used with permission.</span>
+  </div>
+</section>
+
+<script>
+(function(){
+  var BARS = 48;
+  var players = [];
+
+  document.querySelectorAll('.player').forEach(function(p, idx){
+    var audio = new Audio();
+    audio.preload = 'none';
+    audio.src = p.dataset.src;
+
+    var btn  = p.querySelector('.play-btn');
+    var wave = p.querySelector('.wave');
+    var tEl  = p.querySelector('.t-el');
+
+    // deterministic pseudo-waveform, so it looks like audio and never re-shuffles
+    var seed = idx * 977 + 13;
+    function rnd(){ seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; }
+    for(var i = 0; i < BARS; i++){
+      var b = document.createElement('i');
+      var env = Math.sin((i / BARS) * Math.PI);      // quieter at the ends
+      var h = 14 + (rnd() * 0.7 + 0.3) * env * 24;
+      b.style.height = h.toFixed(1) + 'px';
+      wave.appendChild(b);
+    }
+    var bars = wave.querySelectorAll('i');
+
+    function fmt(s){
+      if(!isFinite(s)) return '0:00';
+      var m = Math.floor(s / 60), r = Math.floor(s % 60);
+      return m + ':' + String(r).padStart(2, '0');
+    }
+    function paint(){
+      var pct = audio.duration ? audio.currentTime / audio.duration : 0;
+      var upto = Math.round(pct * BARS);
+      for(var i = 0; i < BARS; i++) bars[i].classList.toggle('on', i < upto);
+      wave.setAttribute('aria-valuenow', Math.round(pct * 100));
+      tEl.textContent = fmt(audio.duration ? audio.duration - audio.currentTime : 0);
+    }
+    function stopOthers(){
+      players.forEach(function(o){ if(o.audio !== audio && !o.audio.paused){ o.audio.pause(); o.btn.classList.remove('playing'); } });
+    }
+
+    btn.addEventListener('click', function(){
+      if(audio.paused){ stopOthers(); audio.play(); btn.classList.add('playing'); }
+      else { audio.pause(); btn.classList.remove('playing'); }
+    });
+
+    function seek(e){
+      if(!audio.duration) return;
+      var r = wave.getBoundingClientRect();
+      var pct = Math.min(1, Math.max(0, (e.clientX - r.left) / r.width));
+      audio.currentTime = pct * audio.duration;
+      paint();
+    }
+    wave.addEventListener('click', seek);
+    wave.addEventListener('keydown', function(e){
+      if(!audio.duration) return;
+      if(e.key === 'ArrowRight'){ audio.currentTime = Math.min(audio.duration, audio.currentTime + 5); paint(); }
+      if(e.key === 'ArrowLeft'){  audio.currentTime = Math.max(0, audio.currentTime - 5); paint(); }
+      if(e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); btn.click(); }
+    });
+
+    audio.addEventListener('timeupdate', paint);
+    audio.addEventListener('loadedmetadata', paint);
+    audio.addEventListener('ended', function(){
+      btn.classList.remove('playing');
+      audio.currentTime = 0;
+      paint();
+    });
+
+    players.push({audio: audio, btn: btn});
+  });
+})();
+</script>
 
 <!-- SPAM SCORE -->
 <section id="score">
