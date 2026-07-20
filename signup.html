@@ -40,6 +40,13 @@ h3{font-size:19px;letter-spacing:-.02em}
 .btn.ghost:hover{background:var(--paper-2)}
 
 .nav{background:#fff;border-bottom:1px solid var(--line)}
+.topbar{background:var(--green-900);color:#fff}
+.topbar-in{max-width:1080px;margin:0 auto;padding:0 var(--pad);display:flex;align-items:center;justify-content:center;gap:16px;height:40px;font-size:13.5px}
+.topbar-msg{color:rgba(255,255,255,.78);font-weight:500}
+@media(max-width:560px){.topbar-msg{display:none}}
+.topbar-call{display:inline-flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-family:var(--display);font-weight:700}
+.topbar-call svg{opacity:.9}
+.topbar-call:hover{color:var(--green-25)}
 .nav-in{max-width:1080px;margin:0 auto;padding:0 var(--pad);height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.03em;text-decoration:none}
 .brand .mark{width:20px;height:20px;border-radius:50%;border:2.5px solid var(--green-600);position:relative;flex:none}
@@ -93,6 +100,9 @@ h3{font-size:19px;letter-spacing:-.02em}
 .rail .timeline{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10.5px;
   letter-spacing:.1em;text-transform:uppercase;color:var(--muted);line-height:2;font-weight:600}
 .rail .timeline b{color:var(--green);font-weight:600}
+.rail-note{font-family:var(--body);font-size:12px;color:var(--muted);line-height:1.6;margin-top:14px}
+.rail-call{display:block;margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-family:var(--display);font-weight:600;font-size:15.5px;color:var(--green);text-decoration:none}
+.rail-call:hover{color:var(--green-900)}
 
 footer{border-top:1px solid var(--line);background:#fff;padding:26px var(--pad)}
 .foot-in{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:10.5px;color:var(--muted);font-weight:500}
@@ -116,6 +126,16 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"/></
 </head>
 <body>
 
+<div class="topbar">
+  <div class="topbar-in">
+    <span class="topbar-msg">Talk to a real person about your line</span>
+    <a href="tel:+18882981067" class="topbar-call" data-cta="topbar-call">
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.5 15.5 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24 11.4 11.4 0 003.57.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+      Call 888-298-1067
+    </a>
+  </div>
+</div>
+
 <nav class="nav">
   <div class="nav-in">
     <a href="index.html" class="brand"><span class="mark"></span>Spam Kathy</a>
@@ -128,8 +148,8 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"/></
     <div id="formWrap">
       <div class="head">
         <span class="never"><i></i>Kathy never misses a call</span>
-        <h1>Sign up and stop the spam calls</h1>
-        <p>Tell us what phone system you use and we will confirm your setup before anything changes on your line.</p>
+        <h1>Start your 30 days risk free</h1>
+        <p>$99 a month for most businesses, no contract. Tell us what phone system you use and we will confirm your setup before anything changes on your line.</p>
       </div>
 
       <div class="embed" id="embed">
@@ -185,10 +205,13 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"/></
       <li><b>Every Monday.</b> An email showing what she stopped and what she passed through.</li>
     </ul>
     <p class="timeline">
-      Live in as little as <b>24 hours</b><br>
-      Works with <b>most phone systems</b><br>
-      Cancel <b>any time</b>
+      <b>$99</b> a month<br>
+      <b>No contract</b>, cancel any time<br>
+      <b>30 days</b> risk free<br>
+      Live in as little as <b>24 hours</b>
     </p>
+    <p class="rail-note">Covers most businesses. High call volume or multiple lines may cost more. We'll confirm your exact price before anything starts.</p>
+    <a href="tel:+18882981067" class="rail-call">Rather talk? Call 888-298-1067</a>
   </aside>
 </div>
 
@@ -196,6 +219,7 @@ src="https://www.facebook.com/tr?id=1377211984291344&ev=PageView&noscript=1"/></
   <div class="foot-in">
     <span>© 2026 Spam Kathy · Dallas Fort Worth, Texas</span>
     <span>
+      <a href="tel:+18882981067">888-298-1067</a>
       <a href="index.html">Home</a><a href="mailto:info@spamkathy.com">Contact</a>
       <a href="/terms">Terms</a><a href="/privacy">Privacy</a>
     </span>
